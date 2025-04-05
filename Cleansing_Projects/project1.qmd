@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Dirty E-Commerce Data"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Joseph Goldmeer"
 format:
   html:
     self-contained: true
@@ -22,7 +22,161 @@ format:
         caption: See code
 execute: 
   warning: false
-    
 ---
 
-### Paste in a template
+```{python}
+import kagglehub
+import shutil
+import os
+import pandas as pd
+from collections import defaultdict
+import glob
+import matplotlib.pyplot as plt
+
+# Folder setup
+project_root = r"C:\Users\Owner\Documents\GitHub\J.Goldmeer.github.io\Cleansing_Projects\shien_data"
+raw_folder = os.path.join(project_root, "raw")
+clean_folder = os.path.join(project_root, "cleaned")
+master_folder = os.path.join(project_root, "master")
+os.makedirs(raw_folder, exist_ok=True)
+os.makedirs(clean_folder, exist_ok=True)
+os.makedirs(master_folder, exist_ok=True)
+
+# Expected files from Kaggle
+expected_files = [
+    "us-shein-appliances-3987.csv", "us-shein-automotive-4110.csv",
+    "us-shein-baby_and_maternity-4433.csv", "us-shein-bags_and_luggage-4299.csv",
+    "us-shein-beauty_and_health-4267.csv", "us-shein-curve-2849.csv",
+    "us-shein-electronics-4395.csv", "us-shein-home_and_kitchen-3719.csv",
+    "us-shein-home_textile-3883.csv", "us-shein-jewelry_and_accessories-3548.csv",
+    "us-shein-kids-4314.csv", "us-shein-mens_clothes-1891.csv",
+    "us-shein-office_and_school_supplies-4233.csv", "us-shein-pet_supplies-4083.csv",
+    "us-shein-shoes-4381.csv", "us-shein-sports_and_outdoors-3853.csv",
+    "us-shein-swimwear-3761.csv", "us-shein-tools_and_home_improvement-3903.csv",
+    "us-shein-toys_and_games-3577.csv", "us-shein-underwear_and_sleepwear-4019.csv",
+    "us-shein-womens_clothing-4620.csv"
+]
+
+files_exist = all(os.path.exists(os.path.join(raw_folder, f)) for f in expected_files)
+
+if files_exist:
+    print("📁 Raw files already exist. Skipping download.")
+else:
+    download_path = kagglehub.dataset_download("oleksiimartusiuk/e-commerce-data-shein")
+    print("📥 Downloaded to:", download_path)
+    for f in expected_files:
+        src = os.path.join(download_path, f)
+        dst = os.path.join(raw_folder, f)
+        if not os.path.exists(dst):
+            shutil.copy(src, dst)
+    print("📂 Files copied to raw folder.")
+```
+
+```{python}
+# Capture raw data types
+csv_files = [f for f in os.listdir(raw_folder) if f.endswith('.csv')]
+raw_dtype_log = []
+column_counts = defaultdict(int)
+column_sources = defaultdict(list)
+column_dtypes = defaultdict(lambda: defaultdict(str))
+
+for file in csv_files:
+    file_path = os.path.join(raw_folder, file)
+    try:
+        df = pd.read_csv(file_path)
+        for col in df.columns:
+            column_counts[col] += 1
+            column_sources[col].append(file)
+            dtype = str(df[col].dtype)
+            column_dtypes[col][file] = dtype
+            raw_dtype_log.append({"column": col, "file": file, "stage": "raw", "dtype": dtype})
+    except Exception as e:
+        print(f"❌ Could not read {file}: {e}")
+```
+
+```{python}
+# Clean and process each file
+column_types = {
+    'price': 'float',
+    'discount': 'float',
+    'color-count': 'float',
+    'goods-title-link': 'str',
+    'goods-title-link--jump': 'str',
+    'goods-title-link--jump href': 'str'
+}
+
+BLANK_VALUES = ['', ' ', 'null', 'nan', '-', '--']
+clean_dtype_log = []
+
+for file in os.listdir(raw_folder):
+    if not file.endswith(".csv") or "master" in file:
+        continue
+
+    file_path = os.path.join(raw_folder, file)
+    print(f"\n📂 Processing: {file}")
+    df = pd.read_csv(file_path)
+
+    # Create 'product_title'
+    col1 = df['goods-title-link'] if 'goods-title-link' in df.columns else pd.Series([pd.NA] * len(df))
+    col2 = df['goods-title-link--jump'] if 'goods-title-link--jump' in df.columns else pd.Series([pd.NA] * len(df))
+    df['product_title'] = col1.fillna('').astype(str).str.strip()
+    df['product_title'] = df['product_title'].replace('', pd.NA)
+    df['product_title'] = df['product_title'].fillna(col2.fillna('').astype(str).str.strip())
+    df['product_title'] = df['product_title'].replace('', pd.NA)
+
+    # Remove missing titles
+    df = df[~df['product_title'].isna()]
+
+    # Replace blank-like with NaN
+    for col in df.columns:
+        df[col] = df[col].map(lambda x: pd.NA if pd.isna(x) or str(x).strip().lower() in BLANK_VALUES else x)
+
+    df.dropna(how='all', inplace=True)
+
+    # Convert dtypes
+    for col, dtype in column_types.items():
+        if col in df.columns:
+            try:
+                if dtype == 'float':
+                    df[col] = pd.to_numeric(df[col], errors='coerce')
+                elif dtype == 'int':
+                    df[col] = pd.to_numeric(df[col], errors='coerce').astype('Int64')
+                elif dtype == 'str':
+                    df[col] = df[col].astype(str).str.strip()
+                elif dtype == 'datetime':
+                    df[col] = pd.to_datetime(df[col], errors='coerce')
+            except Exception as e:
+                print(f"⚠️ Could not convert column '{col}' to {dtype}: {e}")
+
+    for col in df.columns:
+        clean_dtype_log.append({"column": col, "file": file, "stage": "cleaned", "dtype": str(df[col].dtype)})
+
+    # Save cleaned
+    cleaned_filename = os.path.splitext(file)[0] + "_cleaned.csv"
+    df.to_csv(os.path.join(clean_folder, cleaned_filename), index=False)
+```
+
+```{python}
+# Save dtype comparison
+dtype_df = pd.DataFrame(raw_dtype_log + clean_dtype_log)
+dtype_log_path = os.path.join(project_root, "dtype_comparison.csv")
+dtype_df.to_csv(dtype_log_path, index=False)
+print(f"📄 Data type comparison saved to: {dtype_log_path}")
+```
+
+```{python}
+# Create master file
+csv_files = glob.glob(os.path.join(clean_folder, "*.csv"))
+df_list = []
+
+for csv_file in csv_files:
+    df = pd.read_csv(csv_file)
+    df['source_file'] = os.path.basename(csv_file)
+    df_list.append(df)
+
+master_df = pd.concat(df_list, ignore_index=True)
+master_path = os.path.join(master_folder, "shein_master.csv")
+master_df.to_csv(master_path, index=False)
+
+print(f"\n📦 Master CSV created with {len(master_df):,} rows!")
+print(f"💾 Saved to: {master_path}")

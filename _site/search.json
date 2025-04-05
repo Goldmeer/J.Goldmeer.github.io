@@ -33,9 +33,9 @@
   {
     "objectID": "Cleansing_Projects/project1.html",
     "href": "Cleansing_Projects/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Dirty E-Commerce Data",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport kagglehub\nimport shutil\nimport os\nimport pandas as pd\nfrom collections import defaultdict\nimport glob\nimport matplotlib.pyplot as plt\n\n# Folder setup\nproject_root = r\"C:\\Users\\Owner\\Documents\\GitHub\\J.Goldmeer.github.io\\Cleansing_Projects\\shien_data\"\nraw_folder = os.path.join(project_root, \"raw\")\nclean_folder = os.path.join(project_root, \"cleaned\")\nmaster_folder = os.path.join(project_root, \"master\")\nos.makedirs(raw_folder, exist_ok=True)\nos.makedirs(clean_folder, exist_ok=True)\nos.makedirs(master_folder, exist_ok=True)\n\n# Expected files from Kaggle\nexpected_files = [\n    \"us-shein-appliances-3987.csv\", \"us-shein-automotive-4110.csv\",\n    \"us-shein-baby_and_maternity-4433.csv\", \"us-shein-bags_and_luggage-4299.csv\",\n    \"us-shein-beauty_and_health-4267.csv\", \"us-shein-curve-2849.csv\",\n    \"us-shein-electronics-4395.csv\", \"us-shein-home_and_kitchen-3719.csv\",\n    \"us-shein-home_textile-3883.csv\", \"us-shein-jewelry_and_accessories-3548.csv\",\n    \"us-shein-kids-4314.csv\", \"us-shein-mens_clothes-1891.csv\",\n    \"us-shein-office_and_school_supplies-4233.csv\", \"us-shein-pet_supplies-4083.csv\",\n    \"us-shein-shoes-4381.csv\", \"us-shein-sports_and_outdoors-3853.csv\",\n    \"us-shein-swimwear-3761.csv\", \"us-shein-tools_and_home_improvement-3903.csv\",\n    \"us-shein-toys_and_games-3577.csv\", \"us-shein-underwear_and_sleepwear-4019.csv\",\n    \"us-shein-womens_clothing-4620.csv\"\n]\n\nfiles_exist = all(os.path.exists(os.path.join(raw_folder, f)) for f in expected_files)\n\nif files_exist:\n    print(\"📁 Raw files already exist. Skipping download.\")\nelse:\n    download_path = kagglehub.dataset_download(\"oleksiimartusiuk/e-commerce-data-shein\")\n    print(\"📥 Downloaded to:\", download_path)\n    for f in expected_files:\n        src = os.path.join(download_path, f)\n        dst = os.path.join(raw_folder, f)\n        if not os.path.exists(dst):\n            shutil.copy(src, dst)\n    print(\"📂 Files copied to raw folder.\")\n\n\n📥 Downloaded to: C:\\Users\\Owner\\.cache\\kagglehub\\datasets\\oleksiimartusiuk\\e-commerce-data-shein\\versions\\4\n📂 Files copied to raw folder.\n\n\n\n\nShow the code\n# Capture raw data types\ncsv_files = [f for f in os.listdir(raw_folder) if f.endswith('.csv')]\nraw_dtype_log = []\ncolumn_counts = defaultdict(int)\ncolumn_sources = defaultdict(list)\ncolumn_dtypes = defaultdict(lambda: defaultdict(str))\n\nfor file in csv_files:\n    file_path = os.path.join(raw_folder, file)\n    try:\n        df = pd.read_csv(file_path)\n        for col in df.columns:\n            column_counts[col] += 1\n            column_sources[col].append(file)\n            dtype = str(df[col].dtype)\n            column_dtypes[col][file] = dtype\n            raw_dtype_log.append({\"column\": col, \"file\": file, \"stage\": \"raw\", \"dtype\": dtype})\n    except Exception as e:\n        print(f\"❌ Could not read {file}: {e}\")\n\n\n\n\nShow the code\n# Clean and process each file\ncolumn_types = {\n    'price': 'float',\n    'discount': 'float',\n    'color-count': 'float',\n    'goods-title-link': 'str',\n    'goods-title-link--jump': 'str',\n    'goods-title-link--jump href': 'str'\n}\n\nBLANK_VALUES = ['', ' ', 'null', 'nan', '-', '--']\nclean_dtype_log = []\n\nfor file in os.listdir(raw_folder):\n    if not file.endswith(\".csv\") or \"master\" in file:\n        continue\n\n    file_path = os.path.join(raw_folder, file)\n    print(f\"\\n📂 Processing: {file}\")\n    df = pd.read_csv(file_path)\n\n    # Create 'product_title'\n    col1 = df['goods-title-link'] if 'goods-title-link' in df.columns else pd.Series([pd.NA] * len(df))\n    col2 = df['goods-title-link--jump'] if 'goods-title-link--jump' in df.columns else pd.Series([pd.NA] * len(df))\n    df['product_title'] = col1.fillna('').astype(str).str.strip()\n    df['product_title'] = df['product_title'].replace('', pd.NA)\n    df['product_title'] = df['product_title'].fillna(col2.fillna('').astype(str).str.strip())\n    df['product_title'] = df['product_title'].replace('', pd.NA)\n\n    # Remove missing titles\n    df = df[~df['product_title'].isna()]\n\n    # Replace blank-like with NaN\n    for col in df.columns:\n        df[col] = df[col].map(lambda x: pd.NA if pd.isna(x) or str(x).strip().lower() in BLANK_VALUES else x)\n\n    df.dropna(how='all', inplace=True)\n\n    # Convert dtypes\n    for col, dtype in column_types.items():\n        if col in df.columns:\n            try:\n                if dtype == 'float':\n                    df[col] = pd.to_numeric(df[col], errors='coerce')\n                elif dtype == 'int':\n                    df[col] = pd.to_numeric(df[col], errors='coerce').astype('Int64')\n                elif dtype == 'str':\n                    df[col] = df[col].astype(str).str.strip()\n                elif dtype == 'datetime':\n                    df[col] = pd.to_datetime(df[col], errors='coerce')\n            except Exception as e:\n                print(f\"⚠️ Could not convert column '{col}' to {dtype}: {e}\")\n\n    for col in df.columns:\n        clean_dtype_log.append({\"column\": col, \"file\": file, \"stage\": \"cleaned\", \"dtype\": str(df[col].dtype)})\n\n    # Save cleaned\n    cleaned_filename = os.path.splitext(file)[0] + \"_cleaned.csv\"\n    df.to_csv(os.path.join(clean_folder, cleaned_filename), index=False)\n\n\n\n📂 Processing: us-shein-appliances-3987.csv\n\n📂 Processing: us-shein-automotive-4110.csv\n\n📂 Processing: us-shein-baby_and_maternity-4433.csv\n\n📂 Processing: us-shein-bags_and_luggage-4299.csv\n\n📂 Processing: us-shein-beauty_and_health-4267.csv\n\n📂 Processing: us-shein-curve-2849.csv\n\n📂 Processing: us-shein-electronics-4395.csv\n\n📂 Processing: us-shein-home_and_kitchen-3719.csv\n\n📂 Processing: us-shein-home_textile-3883.csv\n\n📂 Processing: us-shein-jewelry_and_accessories-3548.csv\n\n📂 Processing: us-shein-kids-4314.csv\n\n📂 Processing: us-shein-mens_clothes-1891.csv\n\n📂 Processing: us-shein-office_and_school_supplies-4233.csv\n\n📂 Processing: us-shein-pet_supplies-4083.csv\n\n📂 Processing: us-shein-shoes-4381.csv\n\n📂 Processing: us-shein-sports_and_outdoors-3853.csv\n\n📂 Processing: us-shein-swimwear-3761.csv\n\n📂 Processing: us-shein-tools_and_home_improvement-3903.csv\n\n📂 Processing: us-shein-toys_and_games-3577.csv\n\n📂 Processing: us-shein-underwear_and_sleepwear-4019.csv\n\n📂 Processing: us-shein-womens_clothing-4620.csv\n\n\n\n\nShow the code\n# Save dtype comparison\ndtype_df = pd.DataFrame(raw_dtype_log + clean_dtype_log)\ndtype_log_path = os.path.join(project_root, \"dtype_comparison.csv\")\ndtype_df.to_csv(dtype_log_path, index=False)\nprint(f\"📄 Data type comparison saved to: {dtype_log_path}\")\n\n\n📄 Data type comparison saved to: C:\\Users\\Owner\\Documents\\GitHub\\J.Goldmeer.github.io\\Cleansing_Projects\\shien_data\\dtype_comparison.csv\n\n\n\nCreate master file\ncsv_files = glob.glob(os.path.join(clean_folder, “*.csv”)) df_list = []\nfor csv_file in csv_files: df = pd.read_csv(csv_file) df[‘source_file’] = os.path.basename(csv_file) df_list.append(df)\nmaster_df = pd.concat(df_list, ignore_index=True) master_path = os.path.join(master_folder, “shein_master.csv”) master_df.to_csv(master_path, index=False)\nprint(f”📦 Master CSV created with {len(master_df):,} rows!“) print(f”💾 Saved to: {master_path}“)\n\n\n\n\n Back to top",
     "crumbs": [
       "Data Cleansing",
       "Project 1"
@@ -146,14 +146,14 @@
     "href": "index.html",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "This is the home page for my portfolio.\nMarkDown Basics"
   },
   {
     "objectID": "index.html#title-2-header",
     "href": "index.html#title-2-header",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "This is the home page for my portfolio.\nMarkDown Basics"
   },
   {
     "objectID": "Machine_Learning/project2.html",
@@ -275,35 +275,35 @@
   {
     "objectID": "resume.html",
     "href": "resume.html",
-    "title": "Isaac Newtons’s CV",
+    "title": "Joseph Goldmeer’s CV",
     "section": "",
-    "text": "Physicist, Mathematician, Cambridge professor.\n\nisaac@applesdofall.org | My wikipedia page\n\n\n\nStanding on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples.\n\n\n\n\n1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow\n\n\n\n\n2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France\n\n\n\n\n\n\n1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001\n\n\n\n\n1600 Royal Mint, London\n\nWarden\nMinted coins\n\n1600 Lucasian professor of Mathematics, Cambridge University"
+    "text": "Mathematician, Packaging Line Owner, BYU-I Student.\n\njosephhalligan@live.com | My Linkedin page\n\n\n\nStanding on the shoulders of giants\n\n\n\n2010 - 2014 Prairie High School, Cottonwood ID\n\nHigh School Deploma\n\n2018, 2024 - Present Trinity College, Cambridge\n\nBachelor of Science in Business Analytics – Mathematics Minor\n\n1667 - death Trinity College, Cambridge\n\nFellow\n\n\n\n\nSept 2021-current Basic American Foods, Rexburg, ID\n\nOperator: Flume, Sanitation, Dry End, Bag, Bulk, Viking\nLine Owner: Dry End, Viking\nDrums: FPS1, FPS2, Backup FPS\n\nSept. 2019 - Apr. 2020 Mathnasium, Idaho Falls, ID\n\nMath Instructor\n\nSept. 2016 - Jan. 2019 Walmart, Clarkston, WA - Rexburg, ID\n\nCart Associate\nCashier\nElectronics Associate\nOnline Shopper\nOvernight Stocker"
   },
   {
     "objectID": "resume.html#currently",
     "href": "resume.html#currently",
-    "title": "Isaac Newtons’s CV",
+    "title": "Joseph Goldmeer’s CV",
     "section": "",
-    "text": "Standing on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples."
+    "text": "Standing on the shoulders of giants"
   },
   {
     "objectID": "resume.html#education",
     "href": "resume.html#education",
-    "title": "Isaac Newtons’s CV",
+    "title": "Joseph Goldmeer’s CV",
     "section": "",
-    "text": "1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow"
+    "text": "2010 - 2014 Prairie High School, Cottonwood ID\n\nHigh School Deploma\n\n2018, 2024 - Present Trinity College, Cambridge\n\nBachelor of Science in Business Analytics – Mathematics Minor\n\n1667 - death Trinity College, Cambridge\n\nFellow"
   },
   {
     "objectID": "resume.html#awards",
     "href": "resume.html#awards",
-    "title": "Isaac Newtons’s CV",
+    "title": "Joseph Goldmeer’s CV",
     "section": "",
     "text": "2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France"
   },
   {
     "objectID": "resume.html#publications",
     "href": "resume.html#publications",
-    "title": "Isaac Newtons’s CV",
+    "title": "Joseph Goldmeer’s CV",
     "section": "",
     "text": "1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001"
   },
@@ -352,7 +352,7 @@
     "href": "ml.html",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "This is the ml.qmd file\nMarkDown Basics",
     "crumbs": [
       "Machine Learning"
     ]
@@ -362,7 +362,7 @@
     "href": "ml.html#title-2-header",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "This is the ml.qmd file\nMarkDown Basics",
     "crumbs": [
       "Machine Learning"
     ]
@@ -484,5 +484,12 @@
     "crumbs": [
       "Full Stack"
     ]
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "Joseph Goldmeer’s CV",
+    "section": "",
+    "text": "Sept 2021-current Basic American Foods, Rexburg, ID\n\nOperator: Flume, Sanitation, Dry End, Bag, Bulk, Viking\nLine Owner: Dry End, Viking\nDrums: FPS1, FPS2, Backup FPS\n\nSept. 2019 - Apr. 2020 Mathnasium, Idaho Falls, ID\n\nMath Instructor\n\nSept. 2016 - Jan. 2019 Walmart, Clarkston, WA - Rexburg, ID\n\nCart Associate\nCashier\nElectronics Associate\nOnline Shopper\nOvernight Stocker"
   }
 ]

@@ -1,0 +1,370 @@
+column,file,stage,dtype
+goods-title-link--jump,us-shein-appliances-3987.csv,raw,object
+goods-title-link--jump href,us-shein-appliances-3987.csv,raw,object
+rank-title,us-shein-appliances-3987.csv,raw,object
+rank-sub,us-shein-appliances-3987.csv,raw,object
+price,us-shein-appliances-3987.csv,raw,object
+discount,us-shein-appliances-3987.csv,raw,object
+selling_proposition,us-shein-appliances-3987.csv,raw,object
+goods-title-link,us-shein-appliances-3987.csv,raw,object
+goods-title-link--jump,us-shein-automotive-4110.csv,raw,object
+goods-title-link--jump href,us-shein-automotive-4110.csv,raw,object
+price,us-shein-automotive-4110.csv,raw,object
+discount,us-shein-automotive-4110.csv,raw,object
+selling_proposition,us-shein-automotive-4110.csv,raw,object
+goods-title-link,us-shein-automotive-4110.csv,raw,object
+goods-title-link--jump,us-shein-baby_and_maternity-4433.csv,raw,object
+goods-title-link--jump href,us-shein-baby_and_maternity-4433.csv,raw,object
+selling_proposition,us-shein-baby_and_maternity-4433.csv,raw,object
+price,us-shein-baby_and_maternity-4433.csv,raw,object
+discount,us-shein-baby_and_maternity-4433.csv,raw,object
+color-count,us-shein-baby_and_maternity-4433.csv,raw,float64
+goods-title-link,us-shein-baby_and_maternity-4433.csv,raw,object
+color-count,us-shein-bags_and_luggage-4299.csv,raw,float64
+goods-title-link--jump,us-shein-bags_and_luggage-4299.csv,raw,object
+goods-title-link--jump href,us-shein-bags_and_luggage-4299.csv,raw,object
+selling_proposition,us-shein-bags_and_luggage-4299.csv,raw,object
+price,us-shein-bags_and_luggage-4299.csv,raw,object
+discount,us-shein-bags_and_luggage-4299.csv,raw,object
+rank-title,us-shein-bags_and_luggage-4299.csv,raw,object
+rank-sub,us-shein-bags_and_luggage-4299.csv,raw,object
+goods-title-link,us-shein-bags_and_luggage-4299.csv,raw,object
+goods-title-link--jump,us-shein-beauty_and_health-4267.csv,raw,object
+goods-title-link--jump href,us-shein-beauty_and_health-4267.csv,raw,object
+selling_proposition,us-shein-beauty_and_health-4267.csv,raw,object
+price,us-shein-beauty_and_health-4267.csv,raw,object
+discount,us-shein-beauty_and_health-4267.csv,raw,object
+color-count,us-shein-beauty_and_health-4267.csv,raw,float64
+rank-title,us-shein-beauty_and_health-4267.csv,raw,object
+rank-sub,us-shein-beauty_and_health-4267.csv,raw,object
+goods-title-link,us-shein-beauty_and_health-4267.csv,raw,object
+color-count,us-shein-curve-2849.csv,raw,float64
+goods-title-link--jump,us-shein-curve-2849.csv,raw,object
+goods-title-link--jump href,us-shein-curve-2849.csv,raw,object
+rank-title,us-shein-curve-2849.csv,raw,object
+rank-sub,us-shein-curve-2849.csv,raw,object
+price,us-shein-curve-2849.csv,raw,object
+discount,us-shein-curve-2849.csv,raw,object
+selling_proposition,us-shein-curve-2849.csv,raw,object
+goods-title-link,us-shein-curve-2849.csv,raw,object
+goods-title-link--jump,us-shein-electronics-4395.csv,raw,object
+goods-title-link--jump href,us-shein-electronics-4395.csv,raw,object
+rank-title,us-shein-electronics-4395.csv,raw,object
+rank-sub,us-shein-electronics-4395.csv,raw,object
+price,us-shein-electronics-4395.csv,raw,object
+discount,us-shein-electronics-4395.csv,raw,object
+selling_proposition,us-shein-electronics-4395.csv,raw,object
+color-count,us-shein-electronics-4395.csv,raw,float64
+goods-title-link,us-shein-electronics-4395.csv,raw,object
+goods-title-link,us-shein-home_and_kitchen-3719.csv,raw,object
+rank-title,us-shein-home_and_kitchen-3719.csv,raw,object
+rank-sub,us-shein-home_and_kitchen-3719.csv,raw,object
+price,us-shein-home_and_kitchen-3719.csv,raw,object
+selling_proposition,us-shein-home_and_kitchen-3719.csv,raw,object
+discount,us-shein-home_and_kitchen-3719.csv,raw,object
+goods-title-link--jump,us-shein-home_textile-3883.csv,raw,object
+goods-title-link--jump href,us-shein-home_textile-3883.csv,raw,object
+rank-title,us-shein-home_textile-3883.csv,raw,object
+rank-sub,us-shein-home_textile-3883.csv,raw,object
+price,us-shein-home_textile-3883.csv,raw,object
+color-count,us-shein-home_textile-3883.csv,raw,float64
+selling_proposition,us-shein-home_textile-3883.csv,raw,object
+discount,us-shein-home_textile-3883.csv,raw,object
+goods-title-link,us-shein-home_textile-3883.csv,raw,object
+goods-title-link--jump,us-shein-jewelry_and_accessories-3548.csv,raw,object
+goods-title-link--jump href,us-shein-jewelry_and_accessories-3548.csv,raw,object
+rank-title,us-shein-jewelry_and_accessories-3548.csv,raw,object
+rank-sub,us-shein-jewelry_and_accessories-3548.csv,raw,object
+price,us-shein-jewelry_and_accessories-3548.csv,raw,object
+selling_proposition,us-shein-jewelry_and_accessories-3548.csv,raw,object
+discount,us-shein-jewelry_and_accessories-3548.csv,raw,object
+goods-title-link,us-shein-jewelry_and_accessories-3548.csv,raw,object
+color-count,us-shein-kids-4314.csv,raw,float64
+goods-title-link--jump,us-shein-kids-4314.csv,raw,object
+goods-title-link--jump href,us-shein-kids-4314.csv,raw,object
+rank-title,us-shein-kids-4314.csv,raw,object
+rank-sub,us-shein-kids-4314.csv,raw,object
+price,us-shein-kids-4314.csv,raw,object
+discount,us-shein-kids-4314.csv,raw,object
+selling_proposition,us-shein-kids-4314.csv,raw,object
+goods-title-link,us-shein-kids-4314.csv,raw,object
+color-count,us-shein-mens_clothes-1891.csv,raw,float64
+goods-title-link,us-shein-mens_clothes-1891.csv,raw,object
+selling_proposition,us-shein-mens_clothes-1891.csv,raw,object
+price,us-shein-mens_clothes-1891.csv,raw,object
+discount,us-shein-mens_clothes-1891.csv,raw,object
+rank-title,us-shein-mens_clothes-1891.csv,raw,object
+rank-sub,us-shein-mens_clothes-1891.csv,raw,object
+goods-title-link--jump,us-shein-office_and_school_supplies-4233.csv,raw,object
+goods-title-link--jump href,us-shein-office_and_school_supplies-4233.csv,raw,object
+rank-title,us-shein-office_and_school_supplies-4233.csv,raw,object
+rank-sub,us-shein-office_and_school_supplies-4233.csv,raw,object
+price,us-shein-office_and_school_supplies-4233.csv,raw,object
+discount,us-shein-office_and_school_supplies-4233.csv,raw,object
+selling_proposition,us-shein-office_and_school_supplies-4233.csv,raw,object
+goods-title-link,us-shein-office_and_school_supplies-4233.csv,raw,object
+goods-title-link--jump,us-shein-pet_supplies-4083.csv,raw,object
+goods-title-link--jump href,us-shein-pet_supplies-4083.csv,raw,object
+selling_proposition,us-shein-pet_supplies-4083.csv,raw,object
+price,us-shein-pet_supplies-4083.csv,raw,object
+blackfridaybelts-bg src,us-shein-pet_supplies-4083.csv,raw,object
+blackfridaybelts-content,us-shein-pet_supplies-4083.csv,raw,object
+rank-title,us-shein-pet_supplies-4083.csv,raw,object
+rank-sub,us-shein-pet_supplies-4083.csv,raw,object
+discount,us-shein-pet_supplies-4083.csv,raw,object
+color-count,us-shein-pet_supplies-4083.csv,raw,float64
+goods-title-link,us-shein-pet_supplies-4083.csv,raw,object
+color-count,us-shein-shoes-4381.csv,raw,float64
+goods-title-link--jump,us-shein-shoes-4381.csv,raw,object
+goods-title-link--jump href,us-shein-shoes-4381.csv,raw,object
+rank-title,us-shein-shoes-4381.csv,raw,object
+rank-sub,us-shein-shoes-4381.csv,raw,object
+price,us-shein-shoes-4381.csv,raw,object
+discount,us-shein-shoes-4381.csv,raw,object
+selling_proposition,us-shein-shoes-4381.csv,raw,object
+goods-title-link,us-shein-shoes-4381.csv,raw,object
+color-count,us-shein-sports_and_outdoors-3853.csv,raw,float64
+blackfridaybelts-bg src,us-shein-sports_and_outdoors-3853.csv,raw,object
+blackfridaybelts-content,us-shein-sports_and_outdoors-3853.csv,raw,object
+goods-title-link--jump,us-shein-sports_and_outdoors-3853.csv,raw,object
+goods-title-link--jump href,us-shein-sports_and_outdoors-3853.csv,raw,object
+rank-title,us-shein-sports_and_outdoors-3853.csv,raw,object
+rank-sub,us-shein-sports_and_outdoors-3853.csv,raw,object
+price,us-shein-sports_and_outdoors-3853.csv,raw,object
+discount,us-shein-sports_and_outdoors-3853.csv,raw,object
+selling_proposition,us-shein-sports_and_outdoors-3853.csv,raw,object
+goods-title-link,us-shein-sports_and_outdoors-3853.csv,raw,object
+color-count,us-shein-swimwear-3761.csv,raw,float64
+goods-title-link--jump,us-shein-swimwear-3761.csv,raw,object
+goods-title-link--jump href,us-shein-swimwear-3761.csv,raw,object
+price,us-shein-swimwear-3761.csv,raw,object
+rank-title,us-shein-swimwear-3761.csv,raw,object
+rank-sub,us-shein-swimwear-3761.csv,raw,object
+discount,us-shein-swimwear-3761.csv,raw,object
+goods-title-link,us-shein-swimwear-3761.csv,raw,object
+goods-title-link--jump,us-shein-tools_and_home_improvement-3903.csv,raw,object
+goods-title-link--jump href,us-shein-tools_and_home_improvement-3903.csv,raw,object
+rank-title,us-shein-tools_and_home_improvement-3903.csv,raw,object
+rank-sub,us-shein-tools_and_home_improvement-3903.csv,raw,object
+price,us-shein-tools_and_home_improvement-3903.csv,raw,object
+selling_proposition,us-shein-tools_and_home_improvement-3903.csv,raw,object
+discount,us-shein-tools_and_home_improvement-3903.csv,raw,object
+goods-title-link,us-shein-tools_and_home_improvement-3903.csv,raw,object
+rank-title,us-shein-toys_and_games-3577.csv,raw,object
+rank-sub,us-shein-toys_and_games-3577.csv,raw,object
+price,us-shein-toys_and_games-3577.csv,raw,object
+selling_proposition,us-shein-toys_and_games-3577.csv,raw,object
+discount,us-shein-toys_and_games-3577.csv,raw,object
+goods-title-link,us-shein-toys_and_games-3577.csv,raw,object
+goods-title-link--jump,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+goods-title-link--jump href,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+selling_proposition,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+price,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+discount,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+rank-title,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+rank-sub,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+color-count,us-shein-underwear_and_sleepwear-4019.csv,raw,float64
+goods-title-link,us-shein-underwear_and_sleepwear-4019.csv,raw,object
+product-locatelabels-img src,us-shein-womens_clothing-4620.csv,raw,object
+color-count,us-shein-womens_clothing-4620.csv,raw,float64
+goods-title-link,us-shein-womens_clothing-4620.csv,raw,object
+rank-title,us-shein-womens_clothing-4620.csv,raw,object
+rank-sub,us-shein-womens_clothing-4620.csv,raw,object
+price,us-shein-womens_clothing-4620.csv,raw,object
+discount,us-shein-womens_clothing-4620.csv,raw,object
+selling_proposition,us-shein-womens_clothing-4620.csv,raw,object
+goods-title-link--jump,us-shein-appliances-3987.csv,cleaned,object
+goods-title-link--jump href,us-shein-appliances-3987.csv,cleaned,object
+rank-title,us-shein-appliances-3987.csv,cleaned,object
+rank-sub,us-shein-appliances-3987.csv,cleaned,object
+price,us-shein-appliances-3987.csv,cleaned,float64
+discount,us-shein-appliances-3987.csv,cleaned,float64
+selling_proposition,us-shein-appliances-3987.csv,cleaned,object
+goods-title-link,us-shein-appliances-3987.csv,cleaned,object
+product_title,us-shein-appliances-3987.csv,cleaned,object
+goods-title-link--jump,us-shein-automotive-4110.csv,cleaned,object
+goods-title-link--jump href,us-shein-automotive-4110.csv,cleaned,object
+price,us-shein-automotive-4110.csv,cleaned,float64
+discount,us-shein-automotive-4110.csv,cleaned,float64
+selling_proposition,us-shein-automotive-4110.csv,cleaned,object
+goods-title-link,us-shein-automotive-4110.csv,cleaned,object
+product_title,us-shein-automotive-4110.csv,cleaned,object
+goods-title-link--jump,us-shein-baby_and_maternity-4433.csv,cleaned,object
+goods-title-link--jump href,us-shein-baby_and_maternity-4433.csv,cleaned,object
+selling_proposition,us-shein-baby_and_maternity-4433.csv,cleaned,object
+price,us-shein-baby_and_maternity-4433.csv,cleaned,float64
+discount,us-shein-baby_and_maternity-4433.csv,cleaned,float64
+color-count,us-shein-baby_and_maternity-4433.csv,cleaned,float64
+goods-title-link,us-shein-baby_and_maternity-4433.csv,cleaned,object
+product_title,us-shein-baby_and_maternity-4433.csv,cleaned,object
+color-count,us-shein-bags_and_luggage-4299.csv,cleaned,float64
+goods-title-link--jump,us-shein-bags_and_luggage-4299.csv,cleaned,object
+goods-title-link--jump href,us-shein-bags_and_luggage-4299.csv,cleaned,object
+selling_proposition,us-shein-bags_and_luggage-4299.csv,cleaned,object
+price,us-shein-bags_and_luggage-4299.csv,cleaned,float64
+discount,us-shein-bags_and_luggage-4299.csv,cleaned,float64
+rank-title,us-shein-bags_and_luggage-4299.csv,cleaned,object
+rank-sub,us-shein-bags_and_luggage-4299.csv,cleaned,object
+goods-title-link,us-shein-bags_and_luggage-4299.csv,cleaned,object
+product_title,us-shein-bags_and_luggage-4299.csv,cleaned,object
+goods-title-link--jump,us-shein-beauty_and_health-4267.csv,cleaned,object
+goods-title-link--jump href,us-shein-beauty_and_health-4267.csv,cleaned,object
+selling_proposition,us-shein-beauty_and_health-4267.csv,cleaned,object
+price,us-shein-beauty_and_health-4267.csv,cleaned,float64
+discount,us-shein-beauty_and_health-4267.csv,cleaned,float64
+color-count,us-shein-beauty_and_health-4267.csv,cleaned,float64
+rank-title,us-shein-beauty_and_health-4267.csv,cleaned,object
+rank-sub,us-shein-beauty_and_health-4267.csv,cleaned,object
+goods-title-link,us-shein-beauty_and_health-4267.csv,cleaned,object
+product_title,us-shein-beauty_and_health-4267.csv,cleaned,object
+color-count,us-shein-curve-2849.csv,cleaned,float64
+goods-title-link--jump,us-shein-curve-2849.csv,cleaned,object
+goods-title-link--jump href,us-shein-curve-2849.csv,cleaned,object
+rank-title,us-shein-curve-2849.csv,cleaned,object
+rank-sub,us-shein-curve-2849.csv,cleaned,object
+price,us-shein-curve-2849.csv,cleaned,float64
+discount,us-shein-curve-2849.csv,cleaned,float64
+selling_proposition,us-shein-curve-2849.csv,cleaned,object
+goods-title-link,us-shein-curve-2849.csv,cleaned,object
+product_title,us-shein-curve-2849.csv,cleaned,object
+goods-title-link--jump,us-shein-electronics-4395.csv,cleaned,object
+goods-title-link--jump href,us-shein-electronics-4395.csv,cleaned,object
+rank-title,us-shein-electronics-4395.csv,cleaned,object
+rank-sub,us-shein-electronics-4395.csv,cleaned,object
+price,us-shein-electronics-4395.csv,cleaned,float64
+discount,us-shein-electronics-4395.csv,cleaned,float64
+selling_proposition,us-shein-electronics-4395.csv,cleaned,object
+color-count,us-shein-electronics-4395.csv,cleaned,float64
+goods-title-link,us-shein-electronics-4395.csv,cleaned,object
+product_title,us-shein-electronics-4395.csv,cleaned,object
+goods-title-link,us-shein-home_and_kitchen-3719.csv,cleaned,object
+rank-title,us-shein-home_and_kitchen-3719.csv,cleaned,object
+rank-sub,us-shein-home_and_kitchen-3719.csv,cleaned,object
+price,us-shein-home_and_kitchen-3719.csv,cleaned,float64
+selling_proposition,us-shein-home_and_kitchen-3719.csv,cleaned,object
+discount,us-shein-home_and_kitchen-3719.csv,cleaned,float64
+product_title,us-shein-home_and_kitchen-3719.csv,cleaned,object
+goods-title-link--jump,us-shein-home_textile-3883.csv,cleaned,object
+goods-title-link--jump href,us-shein-home_textile-3883.csv,cleaned,object
+rank-title,us-shein-home_textile-3883.csv,cleaned,object
+rank-sub,us-shein-home_textile-3883.csv,cleaned,object
+price,us-shein-home_textile-3883.csv,cleaned,float64
+color-count,us-shein-home_textile-3883.csv,cleaned,float64
+selling_proposition,us-shein-home_textile-3883.csv,cleaned,object
+discount,us-shein-home_textile-3883.csv,cleaned,float64
+goods-title-link,us-shein-home_textile-3883.csv,cleaned,object
+product_title,us-shein-home_textile-3883.csv,cleaned,object
+goods-title-link--jump,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+goods-title-link--jump href,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+rank-title,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+rank-sub,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+price,us-shein-jewelry_and_accessories-3548.csv,cleaned,float64
+selling_proposition,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+discount,us-shein-jewelry_and_accessories-3548.csv,cleaned,float64
+goods-title-link,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+product_title,us-shein-jewelry_and_accessories-3548.csv,cleaned,object
+color-count,us-shein-kids-4314.csv,cleaned,float64
+goods-title-link--jump,us-shein-kids-4314.csv,cleaned,object
+goods-title-link--jump href,us-shein-kids-4314.csv,cleaned,object
+rank-title,us-shein-kids-4314.csv,cleaned,object
+rank-sub,us-shein-kids-4314.csv,cleaned,object
+price,us-shein-kids-4314.csv,cleaned,float64
+discount,us-shein-kids-4314.csv,cleaned,float64
+selling_proposition,us-shein-kids-4314.csv,cleaned,object
+goods-title-link,us-shein-kids-4314.csv,cleaned,object
+product_title,us-shein-kids-4314.csv,cleaned,object
+color-count,us-shein-mens_clothes-1891.csv,cleaned,float64
+goods-title-link,us-shein-mens_clothes-1891.csv,cleaned,object
+selling_proposition,us-shein-mens_clothes-1891.csv,cleaned,object
+price,us-shein-mens_clothes-1891.csv,cleaned,float64
+discount,us-shein-mens_clothes-1891.csv,cleaned,float64
+rank-title,us-shein-mens_clothes-1891.csv,cleaned,object
+rank-sub,us-shein-mens_clothes-1891.csv,cleaned,object
+product_title,us-shein-mens_clothes-1891.csv,cleaned,object
+goods-title-link--jump,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+goods-title-link--jump href,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+rank-title,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+rank-sub,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+price,us-shein-office_and_school_supplies-4233.csv,cleaned,float64
+discount,us-shein-office_and_school_supplies-4233.csv,cleaned,float64
+selling_proposition,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+goods-title-link,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+product_title,us-shein-office_and_school_supplies-4233.csv,cleaned,object
+goods-title-link--jump,us-shein-pet_supplies-4083.csv,cleaned,object
+goods-title-link--jump href,us-shein-pet_supplies-4083.csv,cleaned,object
+selling_proposition,us-shein-pet_supplies-4083.csv,cleaned,object
+price,us-shein-pet_supplies-4083.csv,cleaned,float64
+blackfridaybelts-bg src,us-shein-pet_supplies-4083.csv,cleaned,object
+blackfridaybelts-content,us-shein-pet_supplies-4083.csv,cleaned,object
+rank-title,us-shein-pet_supplies-4083.csv,cleaned,object
+rank-sub,us-shein-pet_supplies-4083.csv,cleaned,object
+discount,us-shein-pet_supplies-4083.csv,cleaned,float64
+color-count,us-shein-pet_supplies-4083.csv,cleaned,float64
+goods-title-link,us-shein-pet_supplies-4083.csv,cleaned,object
+product_title,us-shein-pet_supplies-4083.csv,cleaned,object
+color-count,us-shein-shoes-4381.csv,cleaned,float64
+goods-title-link--jump,us-shein-shoes-4381.csv,cleaned,object
+goods-title-link--jump href,us-shein-shoes-4381.csv,cleaned,object
+rank-title,us-shein-shoes-4381.csv,cleaned,object
+rank-sub,us-shein-shoes-4381.csv,cleaned,object
+price,us-shein-shoes-4381.csv,cleaned,float64
+discount,us-shein-shoes-4381.csv,cleaned,float64
+selling_proposition,us-shein-shoes-4381.csv,cleaned,object
+goods-title-link,us-shein-shoes-4381.csv,cleaned,object
+product_title,us-shein-shoes-4381.csv,cleaned,object
+color-count,us-shein-sports_and_outdoors-3853.csv,cleaned,float64
+blackfridaybelts-bg src,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+blackfridaybelts-content,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+goods-title-link--jump,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+goods-title-link--jump href,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+rank-title,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+rank-sub,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+price,us-shein-sports_and_outdoors-3853.csv,cleaned,float64
+discount,us-shein-sports_and_outdoors-3853.csv,cleaned,float64
+selling_proposition,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+goods-title-link,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+product_title,us-shein-sports_and_outdoors-3853.csv,cleaned,object
+color-count,us-shein-swimwear-3761.csv,cleaned,float64
+goods-title-link--jump,us-shein-swimwear-3761.csv,cleaned,object
+goods-title-link--jump href,us-shein-swimwear-3761.csv,cleaned,object
+price,us-shein-swimwear-3761.csv,cleaned,float64
+rank-title,us-shein-swimwear-3761.csv,cleaned,object
+rank-sub,us-shein-swimwear-3761.csv,cleaned,object
+discount,us-shein-swimwear-3761.csv,cleaned,float64
+goods-title-link,us-shein-swimwear-3761.csv,cleaned,object
+product_title,us-shein-swimwear-3761.csv,cleaned,object
+goods-title-link--jump,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+goods-title-link--jump href,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+rank-title,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+rank-sub,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+price,us-shein-tools_and_home_improvement-3903.csv,cleaned,float64
+selling_proposition,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+discount,us-shein-tools_and_home_improvement-3903.csv,cleaned,float64
+goods-title-link,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+product_title,us-shein-tools_and_home_improvement-3903.csv,cleaned,object
+rank-title,us-shein-toys_and_games-3577.csv,cleaned,object
+rank-sub,us-shein-toys_and_games-3577.csv,cleaned,object
+price,us-shein-toys_and_games-3577.csv,cleaned,float64
+selling_proposition,us-shein-toys_and_games-3577.csv,cleaned,object
+discount,us-shein-toys_and_games-3577.csv,cleaned,float64
+goods-title-link,us-shein-toys_and_games-3577.csv,cleaned,object
+product_title,us-shein-toys_and_games-3577.csv,cleaned,object
+goods-title-link--jump,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+goods-title-link--jump href,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+selling_proposition,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+price,us-shein-underwear_and_sleepwear-4019.csv,cleaned,float64
+discount,us-shein-underwear_and_sleepwear-4019.csv,cleaned,float64
+rank-title,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+rank-sub,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+color-count,us-shein-underwear_and_sleepwear-4019.csv,cleaned,float64
+goods-title-link,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+product_title,us-shein-underwear_and_sleepwear-4019.csv,cleaned,object
+product-locatelabels-img src,us-shein-womens_clothing-4620.csv,cleaned,object
+color-count,us-shein-womens_clothing-4620.csv,cleaned,float64
+goods-title-link,us-shein-womens_clothing-4620.csv,cleaned,object
+rank-title,us-shein-womens_clothing-4620.csv,cleaned,object
+rank-sub,us-shein-womens_clothing-4620.csv,cleaned,object
+price,us-shein-womens_clothing-4620.csv,cleaned,float64
+discount,us-shein-womens_clothing-4620.csv,cleaned,float64
+selling_proposition,us-shein-womens_clothing-4620.csv,cleaned,object
+product_title,us-shein-womens_clothing-4620.csv,cleaned,object
