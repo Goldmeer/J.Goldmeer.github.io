@@ -25,7 +25,7 @@ execute:
 ---
 
 ```{python}
-import kagglehub
+from kaggle.api.kaggle_api_extended import KaggleApi
 import shutil
 import os
 import pandas as pd
@@ -46,8 +46,15 @@ if kaggle_json_path and os.path.exists(kaggle_json_path):
 else:
     raise FileNotFoundError("kaggle.json not found or KAGGLE_JSON_PATH not set!")
 
+# Initialize Kaggle API
+api = KaggleApi()
+api.authenticate()
+
+# Define your dataset
+dataset = "oleksiimartusiuk/e-commerce-data-shein"  # Example
+
 # Folder setup
-project_root = r"C:\Users\Owner\Documents\GitHub\J.Goldmeer.github.io\Cleansing_Projects\shien_data"
+project_root = project_root = os.path.dirname(os.path.abspath(__file__))
 raw_folder = os.path.join(project_root, "raw")
 clean_folder = os.path.join(project_root, "cleaned")
 master_folder = os.path.join(project_root, "master")
@@ -72,17 +79,13 @@ expected_files = [
 
 files_exist = all(os.path.exists(os.path.join(raw_folder, f)) for f in expected_files)
 
-if files_exist:
+# Check if files already exist
+if os.listdir(project_root):
     print("📁 Raw files already exist. Skipping download.")
 else:
-    download_path = kagglehub.dataset_download("oleksiimartusiuk/e-commerce-data-shein")
-    print("📥 Downloaded to:", download_path)
-    for f in expected_files:
-        src = os.path.join(download_path, f)
-        dst = os.path.join(raw_folder, f)
-        if not os.path.exists(dst):
-            shutil.copy(src, dst)
-    print("📂 Files copied to raw folder.")
+    # Download dataset
+    api.dataset_download_files(dataset, path=project_root, unzip=True)
+    print("📥 Downloaded and extracted to:", project_root)
 ```
 
 ```{python}
