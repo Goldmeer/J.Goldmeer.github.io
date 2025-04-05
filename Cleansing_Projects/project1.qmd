@@ -32,6 +32,19 @@ import pandas as pd
 from collections import defaultdict
 import glob
 import matplotlib.pyplot as plt
+import json
+
+# Get the kaggle.json path from the environment variable
+kaggle_json_path = os.environ.get('KAGGLE_JSON_PATH')
+
+if kaggle_json_path and os.path.exists(kaggle_json_path):
+    with open(kaggle_json_path, 'r') as file:
+        kaggle_token = json.load(file)
+
+    os.environ['KAGGLE_USERNAME'] = kaggle_token['username']
+    os.environ['KAGGLE_KEY'] = kaggle_token['key']
+else:
+    raise FileNotFoundError("kaggle.json not found or KAGGLE_JSON_PATH not set!")
 
 # Folder setup
 project_root = r"C:\Users\Owner\Documents\GitHub\J.Goldmeer.github.io\Cleansing_Projects\shien_data"
